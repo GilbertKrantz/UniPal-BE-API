@@ -14,7 +14,7 @@ const port = 3000;
 
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: 'https://gilbertkrantz.github.io'
 }));
 
 const ttsService = new TextToSpeechService(process.env.GOOGLE_TEXT_TO_SPEECH_SERVICE_ACCOUNT);
