@@ -13,7 +13,9 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173'
+}));
 
 const ttsService = new TextToSpeechService(process.env.GOOGLE_TEXT_TO_SPEECH_SERVICE_ACCOUNT);
 const stsService = new SpeechToTextService(process.env.SPEECH_TO_TEXT_SERVICE_ACCOUNT);
