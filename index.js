@@ -26,15 +26,15 @@ const upload = multer();
 // Generative AI
 app.post('/api/chat', async (req, res) => {
   try {
+    console.log('Sending message...');
     const { message } = req.body;
-    console.log('Received message:', message);
 
     if (!message) {
       return res.status(400).send('Message is required');
     }
 
+    console.log("Generating response...");
     const response = await aiService.send(message);
-    console.log('Response:', response);
     res.send({ response });
   } catch (error) {
     console.error('Error sending message:', error);
@@ -49,7 +49,6 @@ app.post('/api/generate', async (req, res) => {
   try {
     console.log('Generating speech...');
     const { text } = req.body;
-    console.log('Received text:', text);
 
     if (!text) {
       return res.status(400).send('Text is required');
@@ -72,7 +71,6 @@ app.post('/api/elgenerate', async (req, res) => {
   try {
     console.log('Generating ElevenLabs Speech...');
     const { text } = req.body;
-    console.log('Received Text:', text);
 
     if (!text) {
       return res.status(400).send('Text is required');
@@ -100,7 +98,6 @@ app.post('/api/transcribe', upload.single('audio'), async (req, res) => {
     console.log('Transcribing speech...');
     const audioBuffer = req.file.buffer;
     const transcription = await stsService.transcribe(audioBuffer);
-    console.log('Transcription:', transcription);
     res.send({ transcription });
   } catch (error) {
     console.error('Error transcribing speech:', error);
