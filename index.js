@@ -18,7 +18,7 @@ app.use(cors({
 }));
 
 const ttsService = new TextToSpeechService(process.env.GOOGLE_TEXT_TO_SPEECH_SERVICE_ACCOUNT);
-const stsService = new SpeechToTextService(process.env.SPEECH_TO_TEXT_SERVICE_ACCOUNT);
+const stsService = new SpeechToTextService();
 const eltts = new ELTextToSpeech(process.env.ELEVENLABS_API_KEY);
 const aiService = new GenAIService();
 await aiService.initialize(process.env.GEMINI_API_KEY);
