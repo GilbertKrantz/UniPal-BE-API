@@ -1,6 +1,6 @@
 import speech from '@google-cloud/speech';
 
-credentials = {
+const credentials = {
     "type": "service_account",
     "project_id": "unipal-427212",
     "private_key_id": "1f46f83b36b32e636fbfb37f73a57f48565f22fe",
