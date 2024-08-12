@@ -14,8 +14,16 @@ const port = 3000;
 
 app.use(express.json());
 app.use(cors({
-  origin: 'https://gilbertkrantz.github.io'
+  origin: ['https://gilbertkrantz.github.io', 'https://unipal.online'],
+  default: 'https://gilbertkrantz.github.io'
 }));
+
+app.all('*', function(req, res, next) {
+  const origin = cors.origin.includes(req.header('origin').toLowerCase()) ? req.headers.origin : cors.default;
+  res.header("Access-Control-Allow-Origin", origin);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 const ttsService = new TextToSpeechService(process.env.GOOGLE_TEXT_TO_SPEECH_SERVICE_ACCOUNT);
 const stsService = new SpeechToTextService();
