@@ -17,7 +17,7 @@ class ELTextToSpeech {
 
   async generate(text) {
     const audio = await this.client.generate({
-      voice: "Meraki female Indonesian voice",
+      voice: "Someone V2",
       model_id: "eleven_multilingual_v2",
       text,
     });
